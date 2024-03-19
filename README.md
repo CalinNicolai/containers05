@@ -53,14 +53,14 @@ docker network create internal
 сети `internal`.
 
 ```bash
-docker run -d --name backend --network internal -v /mounts/site:/var/www/html php:7.4-fpm
+docker run -d --name backend --network internal -v ${PWD}/mounts/site:/var/www/html php:7.4-fpm
 ```
 
 7\. Создал контейнер `frontend` на базе образа `nginx:1.23-alpine,`примонтировав директорию `mounts/site` и
 файл `nginx/default.conf,`пробросив порт 80 на хост, и подключив его к сети `internal.`
 
 ```bash
-docker run -d --name frontend --network internal -v /mounts/site:/var/www/html -v /nginx/default.conf:/etc/nginx/conf.d/default.conf -p 80:80 nginx:1.23-alpine
+docker run -d --name frontend --network internal -v ${PWD}/mounts/site:/var/www/html -v ${PWD}/nginx/default.conf:/etc/nginx/conf.d/default.conf -p 80:80 nginx:1.23-alpine
 ```
 
 ## Вопросы и ответы
